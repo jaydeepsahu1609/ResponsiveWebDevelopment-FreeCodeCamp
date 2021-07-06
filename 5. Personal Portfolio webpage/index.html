@@ -1,0 +1,342 @@
+<!-- 
+
+Hello Camper!
+
+Please read the README below in the JS Editor before beginning. Feel free to delete this message once you have read it. Good luck and Happy Coding! 
+
+- The freeCodeCamp Team 
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container flex-column">
+
+
+
+
+        <!-- User Story #6: My portfolio should have a navbar with an id of navbar. -->
+        <!-- User Story #7: The navbar should contain at least one link that I can click on to navigate to different sections of the page. -->
+        <!-- User Story #11: The navbar should always be at the top of the viewport. -->
+        <nav id="navbar" class="flex-row navLargeDevice">
+            <header class="flex-row">
+                <div class="flex-column title ">portfolio</div>
+                <div class="flex-column toggle" id="toggle" onclick="toggleClick();">
+                    <em class="bars bars-white"></em>
+                    <em class="bars bars-white"></em>
+                    <em class="bars bars-white"></em>
+                </div>
+            </header>
+
+            <div class=" flex-row links" id="links">
+                <a href="#education" class="linksBtn">education</a>
+
+                <a href="#achievement" class="linksBtn">achievements</a>
+
+                <a href="#projects" class="linksBtn">PROJECTS</a>
+
+                <a href="#follow" class="linksBtn">follow me</a>
+
+            </div>
+        </nav>
+
+
+
+
+
+        <main class="flex-column">
+
+
+
+
+
+            <!-- User Story #1: My portfolio should have a welcome section with an id of welcome-section. -->
+            <!-- User Story #10: The height of the welcome section should be equal to the height of the viewport. -->
+            <section id="welcome-section" class="flex-column welcome ">
+                <!-- User Story #2: The welcome section should have an h1 element that contains text. -->
+                <div class=" flex-column welcome-content">
+                    <div class="flex-row welcome-text ">
+                        <h1>
+                            WELCOME TO MY PORTFOLIO
+                        </h1>
+                    </div>
+                    <div class="flex-row image">
+                        <img src="data:image/jpeg;base64,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"
+                            alt="Jaydeep Sahu" />
+                    </div>
+                    <div class="flex-row img-caption">jaydeep sahu</div>
+                </div>
+
+            </section>
+
+
+
+
+            <br><br>
+
+
+            <section class="flex-column education " id="education">
+                <h1 class="section-title">EDUCATION</h1>
+                <div class="flex-row qualifi">
+                    <!-- COLLEGE -->
+                    <div class=" flex-column education-box">
+                        <h2 class="institute-name">
+                            ies ips academy, indore
+                        </h2>
+                        <h3 class="board-name">
+                            RGPV, BHOPAL
+                        </h3>
+                        <h3 class="education-type">
+                            b-tech in computer science and information technology[2019-2023]
+                        </h3>
+                        <h4 class="score">
+                            cgpa -9.38
+                        </h4>
+                    </div>
+                    <!-- HIGHER SECONDARY -->
+                    <div class=" flex-column education-box">
+                        <h2 class="institute-name">
+                            TRILOKCHAND JAIN HIGHER SECONDARY SCHOOL, INDORE
+                        </h2>
+                        <h3 class="board-name">
+                            MP BOARD OF SECONDARY EDUCATION, BHOPAL
+                        </h3>
+                        <h3 class="education-type">
+                            HIGHER SECONDARY (12<sup>TH</sup>)
+                        </h3>
+                        <h4 class="score">
+                            93%
+                        </h4>
+                    </div>
+                    <!-- HIGH SCHOOL -->
+                    <div class=" flex-column education-box">
+                        <h2 class="institute-name">
+                            TRILOKCHAND JAIN HIGHER SECONDARY SCHOOL, INDORE
+                        </h2>
+                        <h3 class="board-name">
+                            MP BOARD OF SECONDARY EDUCATION, BHOPAL
+                        </h3>
+                        <h3 class="education-type">
+                            HIGH SCHOOL (10<sup>TH</sup>)
+                        </h3>
+                        <h4 class="score">
+                            94%
+                        </h4>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+            <br><br><br>
+
+
+
+
+
+            <section class="achievement flex-column" id="achievement">
+                <h1 class="section-title flex-row">
+                    CERTIFICATIONS
+                </h1>
+                <div class="achievement-box flex-column">
+                    <ul>
+                        <li>
+                            Programming in C, NPTEL
+
+                        </li>
+                        <li>
+                            Playing With Linux, Rajiv Gandhi Prodyogiki Vishwavidyalaya
+
+                        </li>
+                        <li>
+                            Programming and Data Structure using Python, Rajiv Gandhi Prodyogiki Vishwavidyalaya
+
+                        </li>
+                        <li>
+                            PYTHON BASICS, Coursera
+
+                        </li>
+                        <li>
+                            Programming for Everybody, Coursera
+
+                        </li>
+                        <li>
+                            Python Functions, Files, and Dictionaries, Coursera
+
+                        </li>
+                        <li>
+                            Python Classes and Inheritance, Coursera
+
+                        </li>
+                        <li>
+                            Data Collection and Processing with Python, Coursera
+
+                        </li>
+                        <li>
+                            PYTHON(BASIC) ASSESSMENT, HackerRank
+
+                        </li>
+                        <li>
+                            Build a real world responsive website with Html 5 css 3 & JS, Udemy
+
+                        </li>
+                        <li>
+                            AI for India : The Guinness World Record Event, GUVI Geek Networks, IITM Research Park
+
+                        </li>
+                        <li>
+                            ESSENTIALS PROGRAM IN JAVASCRIPT, LetsUpgrade
+
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+
+
+
+            <br><br><br>
+
+
+
+
+
+            <!-- User Story #3: My portfolio should have a projects section with an id of projects. -->
+            <section class="projects" id="projects">
+
+                <h1 class="section-title">Projects</h1><br>
+                <!-- User Story #4: The projects section should contain at least one element with a class of project-tile to hold a project. -->
+                <div class="flex-row project-tile">
+
+                    <!-- User Story #5: The projects section should contain at least one link to a project. -->
+
+                    <div class="flex-column project-box ">
+                        <h2 class="project-title">
+                            ROCK PAPER SCISSOR
+                        </h2>
+                        <h3 class="project-desc">
+                            Traditional ROCK-PAPER-SCISSOR game in CLI(multi-user) and GUI(single user) modes in Python.
+                        </h3>
+                        <h3 class="project-link">
+                            <a href="https://github.com/jaydeepsahu1609/ROCK-PAPER-SCISSOR" target="_blank" noopener noreferrer>See project in GitHub</a>
+                        </h3>
+                    </div>
+
+                    <div class="flex-column project-box ">
+                        <h2 class="project-title">
+                            ROCK PAPER SCISSOR
+                        </h2>
+                        <h3 class="project-desc">
+                            Traditional ROCK-PAPER-SCISSOR game in CLI(multi-user) and GUI(single user) modes in Python.
+                        </h3>
+                        <h3 class="project-link">
+                            <a href="https://github.com/jaydeepsahu1609/ROCK-PAPER-SCISSOR" target="_blank" noopener noreferrer>See project in GitHub</a>
+                        </h3>
+                    </div>
+
+                    <div class="flex-column project-box ">
+                        <h2 class="project-title">
+                            HANGMAN GAME in Python
+                        </h2>
+                        <h3 class="project-desc">
+                            Hangman Game (CLI) in python is single and two-player mode game using random module
+                        </h3>
+                        <h3 class="project-link">
+                            <a href="https://github.com/jaydeepsahu1609/HANGMAN-GAME-in-python" target="_blank" noopener noreferrer>See project in GitHub</a>
+                        </h3>
+                    </div>
+                </div>
+                <div class="flex-row project-tile">
+
+                    <div class="flex-column project-box ">
+                        <h2 class="project-title">
+                            Calendar in Python
+                        </h2>
+                        <h3 class="project-desc">
+                            Calendar in python without importing any module. Made for final project submission in Online Summer Internship Training Programme, organized by RGPV Bhopal.
+                        </h3>
+                        <h3 class="project-link">
+                            <a href="https://github.com/jaydeepsahu1609/Calendar-in-python" target="_blank" noopener noreferrer>See project in GitHub</a>
+                        </h3>
+                    </div>
+                    <div class="flex-column project-box ">
+                        <h2 class="project-title">
+                            Front-End-Website-using-HTML
+                        </h2>
+                        <h3 class="project-desc">
+                            FRONT-END SINGLE PAGE WEBSITE MADE USING HTML + CSS(BOOTSTRAP) + JS + JQUERY-PLUGINS. Created after completion of a udemy course.
+                        </h3>
+                        <h3 class="project-link">
+                            <a href="https://github.com/jaydeepsahu1609/Calendar-in-python" target="_blank" noopener noreferrer>See project in GitHub</a>
+                        </h3>
+                    </div>
+
+
+                    <div class="flex-column project-box ">
+                        <h2 class="project-title">
+                            Dice
+                        </h2>
+                        <h3 class="project-desc">
+                            Dice using HTML CSS and VANILA JavaScript
+                        </h3>
+                        <h3 class="project-link">
+                            <a href="https://github.com/jaydeepsahu1609/DICE" target="_blank" noopener noreferrer>See project in GitHub</a>
+                        </h3>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+
+            <br><br><br>
+
+
+
+
+
+            <section class="follow" id="follow">
+
+                <h1 class="section-title">FOLLOW ME</h1>
+                <div class="flex-row follow-box">
+                    <em class="fa fa-instagram">
+                        <a href=""  target="_blank"></a>
+                    </em>
+                    <em class="fa fa-facebook">
+                        <a href="" target="_blank"></a>
+                    </em>
+                    <em class="fa fa-linkedin">
+                        <a href=""  target="_blank"></a>
+                    </em>
+
+                    <!-- User Story #8: My portfolio should have a link with an id of profile-link, which opens my GitHub or FCC profile in a new tab. -->
+
+                    <em class="fa fa-github">
+                      <a href="" id="profile-link" target="_blank"></a>
+                    </em>
+                </div>
+                <h2 class="flex-row">thanks for visiting my portfolio</h2>
+            </section>
+
+
+            <!-- User Story #9: My portfolio should have at least one media query. -->
+        </main>
+
+</body>
+<script src="js/main.js"></script>
+
+</html>

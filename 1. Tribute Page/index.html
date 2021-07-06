@@ -1,0 +1,320 @@
+<!-- 
+    Fulfill the below user stories and get all of the tests to pass. Give it your own personal style.
+
+You can use HTML, JavaScript, and CSS to complete this project. Plain CSS is recommended because that is what the lessons have covered so far and 
+you should get some practice with plain CSS. You can use Bootstrap or SASS if you choose. Additional technologies (just for example jQuery, React, 
+Angular, or Vue) are  not recommended for this project, and using  them is at your own risk. Other  projects will give  you a chance to work  with 
+different technology stacks like React. We will accept and try to fix all issue reports that use 
+the suggested technology stack for this project. Happy coding!
+
+User Story #1: My tribute page should have an element with a corresponding id="main", which contains all other elements.
+
+User Story #2: I should see an element with a corresponding id="title", which contains a string (i.e. text) that 
+describes the subject of the tribute page (e.g. "Dr. Norman Borlaug").
+
+User Story #3: I should see a div element with a corresponding id="img-div".
+
+User Story #4: Within the img-div element, I should see an img element with a corresponding id="image".
+
+User Story #5: Within the img-div element, I should see an element with a corresponding id="img-caption" that 
+contains textual content describing the image shown in img-div.
+
+User Story #6: I should see an element with a corresponding id="tribute-info", which contains textual content describing the subject of the tribute page.
+
+User Story #7: I should see an a element with a corresponding id="tribute-link", which links to an outside site 
+that contains additional information about the subject of the tribute page. HINT: You must give your element an attribute of 
+target and set it to _blank in order for your link to open in a new tab (i.e. target="_blank").
+
+User Story #8: The img element should responsively resize, relative to the width of its parent element, without exceeding its original size.
+
+User Story #9: The img element should be centered within its parent element.
+
+You can build your project by using this CodePen template and clicking Save to create your own pen. Or you can use 
+this CDN link to run the tests in any environment you like: https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js.
+
+Once you're done, submit the URL to your working project with all its tests passing.
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRIBUTE PAGE</title>
+
+    <style>
+        /*------------------------------------- basic styling------------------------------ */
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .row-centered,
+        .col-centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .col-centered {
+            flex-direction: column;
+        }
+        
+        a {
+            text-decoration: none;
+            color: rgba(0, 0, 0, 0.5);
+        }
+        
+        hr {
+            color: black;
+            width: 100%;
+            height: 1px;
+        }
+        
+        body {
+            max-width: 100vw;
+            min-height: 100vh;
+            padding: 0.625rem;
+            background-color: #a29bfe;
+        }
+        /*------------------------------------- container styling------------------------------ */
+        
+        .container {
+            width: 80%;
+            height: 80%;
+            margin: 1rem auto;
+        }
+        
+        .title {
+            height: 10%;
+            width: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            text-decoration: underline;
+            letter-spacing: 1px;
+            padding: 0.4rem;
+            margin: 1rem 0;
+            color: #fdcb6e;
+        }
+        
+        .main {
+            width: 100%;
+            height: 90%;
+            align-items: start;
+            /* border: var(--border-black); */
+        }
+        /*------------------------------------- main container styling------------------------------ */
+        
+        .image-container {
+            height: 50%;
+            width: 20%;
+            padding: 0.625rem;
+            justify-content: space-between;
+            align-items: space-between;
+        }
+        
+        .info-container {
+            height: 100%;
+            width: 80%;
+            padding: 0.625rem;
+            justify-content: space-between;
+            align-items: space-around;
+            background-color: lightskyblue;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+        }
+        /*------------------------------------- image container styling------------------------------ */
+        
+        .img-div {
+            height: 100%;
+            width: 100%;
+            justify-content: flex-start;
+            align-items: space-evenly;
+            /* overflow: hidden; */
+        }
+        
+        img {
+            position: relative;
+            max-width: 75%;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+            margin: 0.5rem auto;
+        }
+        
+        .img-caption {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: capitalize;
+            color: #ffeaa7;
+            text-align: center;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        /*------------------------------------- info container styling------------------------------ */
+        
+        .tribute-info {
+            width: 100%;
+            height: 90%;
+            margin: 0.625rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1rem;
+            text-align: justify;
+            color: blueviolet;
+        }
+        
+        .link {
+            width: 100%;
+            height: 10%;
+            text-align: right;
+            letter-spacing: 1px;
+            margin: 0.5rem;
+            position: relative;
+            bottom: 0%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .link:hover {
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            color: black;
+        }
+        
+        .tribute-info p:nth-child(1)::first-letter {
+            font-size: 3.125rem;
+            font-family: 'Times New Roman', Times, serif;
+            letter-spacing: 5px;
+        }
+        
+        .para {
+            margin: 0.5rem 0;
+        }
+        
+        .para::first-letter {
+            margin-left: 3rem;
+        }
+        /*-------------------------------------  styling to make it responsive------------------------------ */
+        
+        @media screen and (max-width:426px) {
+            .container {
+                width: 100%;
+                height: 100%;
+            }
+            .title {
+                text-align: center;
+                margin: 1px auto;
+            }
+            .main {
+                flex-direction: column-reverse;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            .info-container {
+                width: 100%;
+            }
+            .image-container {
+                width: 100%;
+            }
+            img {
+                max-width: 100%;
+            }
+        }
+        /* ------------------------------------------------------------------------------------------------------------------------------- */
+    </style>
+
+</head>
+
+<body>
+    <div class="container col-centered">
+
+
+
+        <!-- I should see an element with a corresponding id="title", which contains a string (i.e. text)
+                 that describes the subject of the tribute page (e.g. "Dr. Norman Borlaug"). -->
+        <h1 class="title row-centered" id="title">
+            The Saint of Sabarmati
+        </h1>
+
+
+        <!-- My tribute page should have an element with a corresponding id="main", which contains all other elements. -->
+        <div class="main row-centered" id="main">
+
+
+
+            <div class="info-container col-centered">
+
+                <!-- I should see an element with a corresponding id="tribute-info", 
+                which contains textual content describing the subject of the tribute page. -->
+                <div class="tribute-info" id="tribute-info">
+
+                    <p class="para"> Mohandas Karamchand Gandhi (/ˈɡɑːndi, ˈɡændi/;[2] 2 October 1869 – 30 January 1948) was an Indian lawyer,[3] anti-colonial nationalist,[4] and political ethicist[5] who employed nonviolent resistance to lead the successful campaign
+                        for India's independence from British rule[6] and in turn inspired movements for civil rights and freedom across the world. The honorific Mahātmā (Sanskrit: "great-souled", "venerable"), first applied to him in 1914 in South Africa,
+                        is now used throughout the world.[7][8]</p>
+                    <p class="para"> Born and raised in a Hindu family in coastal Gujarat, western India, Gandhi trained in law at the Inner Temple, London, and was called to the bar at age 22 in June 1891. After two uncertain years in India, where he was unable to start
+                        a successful law practice, he moved to South Africa in 1893 to represent an Indian merchant in a lawsuit. He went on to live in South Africa for 21 years. It was in South Africa that Gandhi raised a family and first employed nonviolent
+                        resistance in a campaign for civil rights. In 1915, aged 45, he returned to India. He set about organising peasants, farmers, and urban labourers to protest against excessive land-tax and discrimination. Assuming leadership of
+                        the Indian National Congress in 1921, Gandhi led nationwide campaigns for easing poverty, expanding women's rights, building religious and ethnic amity, ending untouchability, and above all for achieving swaraj or self-rule.[9]
+                        Also in 1921, Gandhi adopted the use of an Indian loincloth (short dhoti) and a shawl (in the winter) woven with yarn hand-spun on a traditional Indian spinning wheel (charkha) as a sign of identification with India's rural poor.
+                        He also began to live modestly in a self-sufficient residential community, ate simple vegetarian food, and undertook long fasts as a means of self-purification and political protest. Bringing anti-colonial nationalism to the common
+                        Indians, Gandhi led them in challenging the British-imposed salt tax with the 400 km (250 mi) Dandi Salt March in 1930 and in calling for the British to quit India in 1942. He was imprisoned many times and for many years in both
+                        South Africa and India.</p>
+                    <p class="para"> Gandhi's vision of an independent India based on religious pluralism was challenged in the early 1940s by a new Muslim nationalism which demanded a separate Muslim homeland carved out of India.[10] In August 1947, Britain granted independence,
+                        but the British Indian Empire[10] was partitioned into two dominions, the Hindu-majority India and the Muslim-majority Pakistan.[11] As many displaced Hindus, Muslims, and Sikhs made their way to their new lands, religious violence
+                        broke out, especially in the Punjab and Bengal. Eschewing the official celebration of independence in Delhi, Gandhi visited the affected areas, attempting to provide solace. In the months following, he undertook several hunger
+                        strikes to stop religious violence.</p>
+                    <p class="para"> The last of these, undertaken on 12 January 1948 when he was 78,[12] also had the indirect goal of pressuring India to pay out some cash assets owed to Pakistan.[12] Some Indians thought Gandhi was too accommodating.[12][13] Among
+                        them was Nathuram Godse, a Hindu nationalist who assassinated Gandhi on 30 January 1948 by firing three bullets into his chest.[13] Gandhi's birthday, 2 October, is commemorated in India as Gandhi Jayanti, a national holiday, and
+                        worldwide as the International Day of Nonviolence. Gandhi is commonly, though not formally, considered the Father of the Nation in India[14][15] and was commonly called Bapu[16] (Gujarati: endearment for father,[17] papa[17][18]).</p>
+                </div>
+
+                <br>
+
+                <hr>
+                <!-- I should see an a element with a corresponding id="tribute-link", 
+                which links to an outside site that contains additional information about the subject of the tribute page.  -->
+                <div class="link">
+                    <a href="https://en.wikipedia.org/wiki/Mahatma_Gandhi" id="tribute-link" target="_blank">
+                    Click here to see more about Gandhiji</a>
+                </div>
+
+            </div>
+
+
+
+            <div class="image-container col-centered">
+
+                <!-- I should see a div element with a corresponding id="img-div" -->
+                <div class="img-div col-centered" id="img-div">
+
+                    <!-- Within the img-div element, I should see an img element with a corresponding id="image". -->
+                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUWFRgVFRUYGBgYGBgYGhgYGhgYGBgYGBgZGRgYGBgcIS4lHB4rHxgYJjgmKy8xNTU1GiQ7QDszPy40NTEBDAwMEA8QHhISHjQsJSs0NDQ2NjQ2NDQ0MTQ0NDQ0NDY0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NP/AABEIAQEAxAMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAEAAECAwUGB//EAEAQAAIBAgQDBQUGAwYHAQAAAAECAAMRBBIhMQVBUQYiYXGBEzJSkaFCcrHB0fAUYuEjNIKSorIVFjNjc8LSB//EABoBAAEFAQAAAAAAAAAAAAAAAAEAAgMEBQb/xAAtEQACAgEDAwMDAwUBAAAAAAAAAQIRAwQhMQUSQVFhcRMikTJSoRQzgdHxI//aAAwDAQACEQMRAD8AxrxXiitOgOZHvGiiioQ0UUUIhXkkQtoBeTSkN2+XP1PKFodLDQdJmanqUMbcYbv+DW0nScmVKU9l/JSmDP2mA8tf6QlMGnPMfW34SaLCVSZU9fnn5r4NvH0zTQ8X87lK4Wn8A9Sf1iOGT4B82/WFqkcU5B/UZv3P8k/9Jg/avwBDCUz9kjyYx/8AhSHZ2HnYj8poLQli0JJDWZ48SZDPQ6eXMEY1Xg7jVSr+A0b5H8pnshBsQQehFjOryESTUkcZXUMOvMeR3Ev4OqSTrIrXtyZ2o6PBq8Tp+j4OSim7jezzAZ6Jzjmh98eXxfjMS02cOeGVXF2YWbTzwupqhCOIwkpKQDR4rRRDSykASAzZRzNibeg3hJpUr6VTbTdG2vr+cEjxrTfkKlXgk1rmxuL6Ha462ijRQisEjxhHEBIKKPaPaIRC0OoYS1iRdiM1uSr1P83QeIkcBh87hf2TymzjcKEGcsBYXY65bDRQPjN9NND1AmZrtS0uyD+TW6fpYyayTXwYQGsJRZSAQdd7633vzvCqK3nOM6oIopL0WVoJesQiSiWKsiol6JHJDGySJLlpSdJISiR6iRtgvsYv4eHBI/s47tBYGgKyniHCExAzCyVfi5P4OPz3miySoi2okmLJPFK4sizYYZotSVo4XEUHRijqVZTYg/vUeMrnbcW4cMSl1sKqDun4h8B/LoZxRUjQ6EaEHcEbgzpNLqI5o2ufKOT1mllgnXh8MUcRrSQlkpiijxRCFFFFEIEEkBEBJBY0kGAkwsmqy1KdyB1jJSpWOjHudGvwLD2YPrpt1PU9bb/01mrxKnpnJAYWy3GbKdgUU+8/Txt4QTBLlAy35AnUDxA/fmYdXF7sDdgtr8kFvsj568ztOfk3Jts6eEVGorwcdTTW2uhIN9TcHW55m80KKQaogVrKtlBsOrW95ieZJv8AhyhdCZsv1M14u4ovppLwkggl4iExIkIRZReWo8KYxoMpiEIIKjS9GkqZGwtQJKwg6tJF4+xtEnWVMsRqRXgYUii+U3mX2k4aHX+IQaj/AKijmPj8xz+c1KsfBVbGx1B0tyN+Um0+eWGaaK+r08c+Np/8ZwckIfxvh/sarIPcPfT7pvp6EEeggAnTwmpxUl5ONyQcJuEuUK0UeIRwwUUnFEIFUS1VkUWXosjJkJUl9NNdifAbnoIyrLqZtqTYAEk+HO3jIcz+x/DLGnV5F8o2uF4JWILNe3vW0W/JF8BNHEomqgE7HKNyd9T4+fLkNTm4Z8ypqSx0AF8iCw5cvXU+U0GfKuQak73trfck+MxFwdA+TmMfTbOS22gAGwA5DwipG0v4pq173N9bbC/LxMqpKDKGRVJmpidwQXTN5bYwWgcp1mggBEaOexQ721kUxIhLIOY0gzsg5WgEtwtatheSTE9IFhsQLZbX15wum5B0AH0jkxriFJjANxL0xiHcQZar7jKYz1T9tAfER9jKCqlENqrShsy7iULUX7BI8IR/EMNGEVpiqitqkim95caw6SObwiQmUdp8Pnw61OdNgD9xzY/6ss5ITu8WubDVV/7bn1AuPqJwc6Lp03LFT8M5Xq2NRzKS8oeKKKaBlEoo0UQRkWEosqQQhBK85qMXJ8ItY4OclGPL2LqNBm2H6Q+lwctu6aWNtTqNRfwvOfq4qpUb2dIlE2JGjN68hBcZgqmHIdXcN94/Uc5h5dfKbaVJHS6fpUYJSk7Z0eO4muEKUqg0fvl7HvBb91GA965uegI2vc6VLidGupyuNrsQe6l/sjk7WGu4Fpk4HiKYql7PEorZGBINwCbaMpGqm19pgcV7M+zu+Gdra3VjfTlZufk1/OQLKuGWJYJXsjXxuJV2GTRB7o5m2mc+cnSactQ4w6ELVS3iND8tj6H0m/hcYji6MG623HmNx6ytOL7rZaxNdvauTYSxllmXUajpA8M806ZuIxDnsRZiRppKhT6m8udiOV/KVK4vzHpCwIVPBAG4h+HpdZFKgA1MprcXpJu4jopAk2zUp016CTbCo3UeRnM1u1tFdmBlK9tKckXwRNe50FXhxXVTfz3hNB9LML+cAwPHqdTZheHs43iVeBb+ROo+yoEpKmXUHDS98sVWH2KWp3pVB1Rx/pM8+XYT0ihUF7HY6GcBjcP7Oo9P4HK+g2PytNrpclTic71qDuMvlA8eKKaxhkoooohFyLJ1fcPkZCnLilxbqJn6tOWGSXoauhlGOeLl6keGoA6W5ia3FeG52B0mVwvWooP2bwLi3E6ntGCE9JzEVaOxd3sX4lUpOQp3Av6GF4Jy6nmJy+JrNqzG569J2XBcNlwyMd3GY+u30hcHyGUq2ZgYrCrmKsAQeRFx8pSezObv0HKONgS2U+AYd5fqPCH45rvD8C9rQRlJPYE4pxMRON4nDd3F4cleVRbC/k47jnw7pnQ4LHJURalMkoxIswKG40IF9CR4EzWpMGWxsQRqDqD5g7zJr8KCf9A+y37qaIb66p7v0kkmmrS3IIqSdNhpq302boZUcYliCQGHI6TMfFVE0dAw+KmchHjka6fK0VSotQe+pPIVkya9A3un/NI7JOOSjGJVqtlR1Ucze/0Er/5XBF3fMepJtKcZgKxIAoUkJ0Dh3U+hUDN5BoMeDBWH8TVqMltQjWseWr5tPWSRXvQJeqVk37K3NlKE8grH9geOwldXgeHpC7JXxB/7bpTpjrlZlLv52APKVYjA1aFBKVOm7tUXPiXRdSCL06IbKSEFwzC2ugmYMPWphHLkZr90N31tzdOV/GSJSq0yu2m90GthEyvUwrVUemM70KuVmyD3npuoXNl3KkXtcgm02+DdomdQh1baAcHxRavSJAzB0UkbMjkI3oVYj1l3CKCISFdAQSNRrobRk5Wt+SaGOns9jrhiciFzyBPynKP2pr1n9nh6bO52VAWNupA2HibCFdoGqM1PCoyM9dQdD7gJ0LeYBPkDMbEcVpUlahhrmknvtaxrsCAzuxYErcgKtiAOW8dBbbq2MnLfZpe50PB8VjFdRURD1UVqDVB5ork+m8hxupmxFQ2Iu2xFj7q8pf2ZxGFqB6dSgqsiksjqL2UXOh1Gggj1C9FXa5ZH9nc6koyl0DE6krlZbnW1ppdObjPurZ7fDMbq6Usajdtb8cpA8UYRxN45slFFaNEItUS9YOhhCmV2WkQc5HWoNr2aXNgkLkn3W1BjWBFjsd4yVK1IWCh0vpflOd1mn+lPbh8HW9P1X1sS9Vs/9g3EeDWRyCNtITg+Lq1FV2KKEI8QLR6nEVI79Fx90m0FfAtUACJkTe53N+cqeKL735AmxAZrzUwrTIOBKNY6zTwx5SN0nsP8G5hqmkeo94EjSxHtvH2RuIQtG/IeZjvRuLXY+AAsfnJ0DczQRRHRVjJNpnPPw9wrBM6BgRbMuQ+DJsR8pnVjiQTmCZXbvZaaaZmAIVjcqJ260Q0qx3Dg1NwvvZSV+8veUfMCH6dp0N71e6OIxJqO7MtJr3OuW2nLXykF4PWfdFF+Wl/XedzgnR6auDuP3+koxWIA0ECVJDlO9kjl8FwwUqiZhdzlZQLWspLG99tVUadfGanD+C10Pv09Tc3pqx18by/AoXrZztTGUfeOpHnsSOVl8RN0RRVttjZS3OX43gGoua7FC1RBRDpTyEEkli9ibnJcA9D4TEwXZ2ldWy57EHWooU9LoaZJHhfbSejYvBJXpGm4uNxbQgjYg/veYmB4DTVvfY25GStOLteRke1x+4F4pw6nTBxDgPUqnIXtfRgS40IOoFtLeEzSi+yfLcAuHGue+RQu9gbFqpF7X7pnR9rMKTRpqltH56AAo12Y8gLXJnJV3BIy+6oyrfe17lj4sSWP3rcpqaXF3dqi97t+mxg6/N2yl3JVVL13KxJCRjibhz5OKNFAEmhl6NA1MvRpE0TphIMklQrt8uspVpLN4yvnwwyxcZFrT6ieGalH/pp4XEI6lHt6wuriEVLAjac5UAO/zBsZg4/EvnZAxsCLeoB39Zh59JPDvaa/k6TS63HqHVNNb0ateuGYkeMIwwmPgNVseU1KFS0z5KnRpp7Gug0jskpo1IRe8IBqdUgw2njR1mZUFgZk4jEFTvHKVC7Uzsf+IAc4LW4xyBnG1OJ8r3MlhUq1DZdLmw6m/QCPuQ3tgjUq8RemzMjIFY5mRhmUsd2ABBVjzsdekhgsXWxLFVZaajdkVs58AzMSPMWjns+6oXdWOthcrcm4BtrYAHn+xnYHGewrOh0131t9fzt845wklbQzvxt1F7nX4bhr0l7jFgOR36mHYTFZtDoYFguMIw3hDOt7iNteAST8mzh21mLjsYUrOi0qjG4KlMmUhgDuzrltfnNHC1AbazI4riLYk+CJf1WSN3EYo/dXsU8bWq1BnqsFAZAtNDm3bUu9hm0HujTxM5q06LtJiv7NE5sc5+6t1X5kt/lnPzoOmw7MN+rs5Lq2RS1DS8KhrR7RR5oGYK0aSigHFIM2uGcGeoMx7i9SNT5Dp4mdYvBaQ2poLbd0aS7+GYbE/jMqetbX2qjaxaBJ3J2ZuH4JSQajMera/wBISmHQ+6q262H0lvsix1NwPQGFKkpyySe7ZfjjjHZKjObBILnKCepE847SAfxVW1t1229xJ33aXG+ypM3hPL/aF2LHcm8hzP7bZd0iXe69ArDCx84SXtBkGklnvM9qzTNTDV7TQWrMOgRsZp4bYRvAhsViJkGm1Rso9T4TS4gthB8BWCKxte8cg+CjCcOUv3mVFBtdja5tew5nTU+HUkA9twdaCA5bE90C1zqe7bOT3u9bYAXNtlOXhHpOS3fZFfobXH6Qap2brnVHzjx3HnLOOcVzyU82OcuOD1H+K7wswKBNAFzXJsAzEbCzFgotbMCdrDkeOYam91ZgqU2ZiFANRnOhGgte9ha51zX92y8scBiafI9e7e2mgPdIOxI9YkxtUAA5iBoAHLAaWIyPcDS49TJu9MhWmkvJD+0pkMp7pI8QL6geNgDe3TymrQ41UIvZrC1zYlRfYk8h5zPONDEFwTbqCNd7m1wddeU2+CdosPQuwovVcartlVzpma7WsAAo0vbMb7ANlCMh6lOG3JrcCxzOcxYBALsxOgHWPg6or1qlZu6gu5PwogsB52AFupircWONCU0p5Bbve7d2Nt8oty8ZXxNhSQYZN7hqh8Rqiem58bdI7T4Pq5FCPHlkes1SwYXkly9kgLHYo1HZyLX0VfhUaKvy+t5QIwjzqIxUUkuEcROTlJylyyUkJGOIRpKPFFEKz1Oo4X9IG7sxtt5S125x6Kc+ZnNnXck6dISbLpJqJViKgVSTsBeAccf2vwz4hkw9O2dzfXRVRdWdj0GnzE8+VACQpuFYi/UAkBvUC/rPTuFUXd8Q7dx6ilKd/sIUuh8yzXPoOU8zFFkZkdbOjFWU8iNCJFn4otaSrbDaQjFI6HptCUOkoN0aKBS2mkNwGI5QZ16CRFQjlE9xGlxDVdILhcLmsTsIwxV1sY+Dq5TaDgJrYvC5lBUC6/hHwOIy2vJYTEwqvhVcXUa9OsK3I262ZXiXV9UbK3UbHwYcxAvZ03GWvh8x5PTJzj1Gp9RMzFK6McoaWYevW3Ct8o9NrcO1UEV+z2EvriMQn8uVDp5sl5udnuA4amr+zV2V1Od6vvMADlAWwAF9dhtMunxKuuhVvqJ0eDxf9izH3ipsPMWksZtumQTj5MHs4ooh67bICQPic6IvqSPkZksxJJJuSSSepOpM0uKVQqpQXZO8/i5Gg/wg/WZs6Hp2Dsx9z5e/+DlOr6n6ubtjwtv8iEcRCOJoGOISQjR7RCJiKNFEPPTiLmXIsiiy4Cc0dahjM3iz6Inxtr90an62HzmiZlYpM7tbdLW8xqf0hQmSrLldH+IW9V/pOT//AELhlmTEoNHsj2+IDuMfMXHoJ2Vdc9O43WzD03lGIwy4ig9JtnW1/hbdW9CAY2ce6ND8U+2SZ5VSNj4Qqi2sFRSjMjCzKSrDoVNj9ZaxsPCZk1vRsr1Re7hYG9S5MmozHeWoVXQ2gWwQI1OsYVL7HUQiu4Oii8HbBPva0kST5AwvC462hm3guITknQjePSxTLC4XuhrfqehJiVPSQRxmnIUuKnrC6fFbaxrTXgHadwhUjlKsYHWmzU6bORsFF7HkxA3A3sJgYbihbYX/AHznbYRLUkdDe4zX6nmD9R6SzgVyTa2RS1LcYuKdN/weZlrk3Nzc3vvfnfxiE9RxPDqGJW7oCfiGjr/iGs4rjvZ18Pdlu9L47d5ddnH/ALDTynRYdXCf2vZnJ6jQzx/ct0YscRo8uGex4ooohDx44jQBPVlWSj2iM5s7Ag0Cwo3PUk/WF1ToT4QDCv8AZO/4xMQQBkP8p+kpZcjAj3WPyPSGgAi0pIt3GF1MKA0cB23wGTECqo7tZbn762D/ADGU+pmMKelxqPwne9rcEXwzaZjTYVFbnYaOD/hJ+QnFYZNdNjKWeNSNPTTcofAEyW/USORm0tfxm3WwadcvUTOr1QO7TB8xzldFlNEKeIVBtcwSrWd9zYSaUWvrJNTI3jlSCBvhwOcP4BwT+IexJVFsXYbn+RfE9eXyldOiGYA7X18p2XDKiIgVBYeEfGRHk42ChwDDImRaSWO5IzMfNmuZzPGOEouqKAPCdPUxVxM7EODe8EpWR400calR0N1NvwPgRPROw/E/a0nQ+8hD2/le4NvC4/1TkMXhRfSS7N4r+HxCOdEJyP8AcbQ38t/SS4cva6BnxKUW1yemUHyOR9k6+V+fzh9QeFxsQdQR5TOOjqDqLlfMEaQ3CsbFTupy+Y5H5S+ZJxPaPs4aZNSipNM6sg1KeIHNPw8pzYnrq81+UxeI9nKNUlspR/iSwv4sux+h8ZewaztXbP8AJlanp/c+7Ht7HnsU38Z2UrpqmWoPDuv/AJTp8jMWtRZDldWRujAqfrL8MsJ8My8mDJj/AFJohFJARR9jKPVrxXjXjXnNnXlWKay26m0orULgEbjb9IsS/fA6C59doShhAVYWtmHjzHSEMtxBMRRIOdN+Y6iXYetcQBHsV0Oqn1nHcb4C1ItVojNTOrIN6d97dU/CduRKiCNRtGzipqmPx5JQdo8xZGfT8IbhOFW5ToOJ8Eyk1aC+L0x9WQf+vy6QPD4tSBaUpY3F0zRjmUo2gSpw8DlMnF4bXadFVe8AqU7mMaXgfGT8mamE8JrYGhaE4bDAiFLhLRKIJT8EBh1lb4ISx8O/IyrJUjn8DE/cYYBBMPimDA1AnQpSfnBuI4fuwNeR0Zbmn2ZxprU0ubvTYI/iAO43yBH+Gb2bLVtyZR8xPP8AshWKYtU5PmUjyBZfkRO+xyahhyEv4Zd0UZ2eHZN153Cn01jVORiptmUHqI6C4sZKQjqJDEYZHXK6K69GAP47RYdj7p5S4w8ApPk5yv2SoE3DVEHwhhYfME/WKdCYo/6+T1f5If6XD+1fgoMRjXkKzaW66SAsAlE5nYwhRlPh+Epw25+8fpDGWEQ8oq07d4eo/OWI1tDLIgkKT3kyJS6WNxtLEa8AiNrGYXHuDXvWoiz6l1GzjmwHx/j5zoiJURaNlFSVMdCTg7Rw2FcsIX/DmG8Z4aUY16Yup1dBy6uo6dR6yFGupF5SlDtdMvqakrQ+HW0MWUo4l6tHIDJBY+SOI4hG2RZIBjUuDNEmD11uIpKx0WcvghkxVJ9rVFv5Mcp/GekVVnm/FaZBuNwbjzG09DweJFSmjjZlDevMfO4kumfKIdXHiQsNoSvqIQRB30IMJlplNFdZbEN6SxTE63FpXSbl0iETMUciKAIKTrK2Nz5SVRraysaKT5xomUYJt/MzQWZWFNj5zTQwiQzpHRr77yZlTjmIglpEqK5fKTRrxXiEOrXjkSq1papgCV7aTmOK4L2L5lFqbnS2yN8Pkdx6idUy3lVagrqUcXBFiOv9Y2ce5UPxz7ZWctSvvD6RgD0noPkfVfsP8S//AEOYh9MjlKiVOmXG090XFpD2skIsghARFWM5vJ5BGeIRz/FKe82+xWLuj0juhzD7rbj5/jMviI0Mr7HNbE26o/01ixOpjsy7sT9jvHTSPQOnlpHI0ldI2YjrL9mYESmotjfrLZF1uIRDXijU9ooBGfWOoHjFXNlPlHtdifSRxPumMCDJsJoUW0gKbQjDNEJBojERhJQhKW0iJ5iWMsp28oBFiteIi0qvbXlLg1xEIkDE4kNpMGIQNi8MlRCjjQ/MHkQeRnMEvQf2b7fZbk46j8xynXOsC4jglrIUOjDVW+FuR8uokeSHcrXJNiy9rp8GYlcGWCpMKjVdWKOMrqbEfgR1B3BhyVf36Srb8l1x8oPzyFSpBzUldSpC2NUQXHG4kOyP96H3H/2yOJeWdj1viSeiP+Q/ONg/vQ/Iv/N/B3olDtYg678gT+EvEqrrNEymWrUXqPz+XpJKwOoN/KB0iTqVNthufM39BCaT8spHnCAnlijxQCABz85RivdjxRoSmltLqMeKIQUkmIooQiMoqx4oBEfsyVCPFEIm0dYoohDmD/aiihQjk+1P95X/AMa/7mkaX7+UUUoZP1M08f8AbRd09PxldT9Y0UD4CuQStCOx/wDeW/8AG3+5Yoosf60HJ/bfwd2JGtFFNEyWPQ92WtFFCAYRRRQCP//Z"
+                        alt="MK Gandhi Image" id="image" />
+
+
+                    <!-- Within the img-div element, I should see an element with a corresponding id="img-caption" 
+                        that contains textual content describing the image shown in img-div. -->
+                    <p id="img-caption" class="img-caption">
+                        Mohandas Karamchand Gandhi : The Father of The Nation
+                    </p>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</body>
+
+</html>

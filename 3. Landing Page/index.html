@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LANDING PAGE</title>
+
+    <style>
+        /* -------------------------------------- BASIC STYLING ---------------------------------------- */
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        .flex-column,
+        .flex-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .flex-column {
+            flex-direction: column;
+        }
+        
+        body {
+            max-width: 100vw;
+            min-height: 100vh;
+            max-height: auto;
+        }
+        /* -------------------------------------- CONTAINER STYLING ---------------------------------------- */
+        
+        .container {
+            width: 100%;
+        }
+        /* -------------------------------------- HEADER STYLING ---------------------------------------- */
+        
+        nav {
+            max-height: 5rem;
+            background-color: #130f40;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .logo {
+            justify-content: flex-end;
+            width: 20%;
+            height: 100%;
+            overflow: hidden;
+            border: 2px solid #130f40;
+            border-radius: 2rem;
+        }
+        
+        .navbar-items {
+            width: 79%;
+            height: 100%;
+            justify-content: flex-end;
+        }
+        /* -------------------------------------- NAVBAR STYLING ---------------------------------------- */
+        
+        .logo>img {
+            max-width: 75%;
+            height: auto;
+        }
+        
+        .navbar-items>a {
+            padding: 1rem;
+            border: 2px solid #ff7979;
+            font-size: 1.2rem;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 800;
+            margin: 1rem;
+            margin-right: none;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: #ff7979;
+            overflow: hidden;
+            position: relative;
+            z-index: 99;
+        }
+        
+        .navbar-items>a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            top: 0;
+            left: -100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .navbar-items>a:hover {
+            transition: all 0.2s linear;
+            color: white;
+            border-color: white;
+        }
+        
+        .navbar-items>a:hover::before {
+            background-color: #34ace0;
+            left: 0%;
+            transition: all 0.2s linear;
+        }
+        /* -------------------------------------- SECTION STYLING ---------------------------------------- */
+        
+        section {
+            width: 100%;
+            max-height: 100vh;
+            padding: 5rem;
+            margin-top: 3rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1.section-title {
+            line-height: 0.72rem;
+            margin: 5rem;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: underline;
+            text-transform: capitalize;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+        }
+        /* -------------------------------------- SECTION1 STYLING ---------------------------------------- */
+        
+        #section1 {
+            background-color: #1e272e;
+            color: white;
+            padding: 15rem 0;
+        }
+        /* -------------------------------------- SECTION2 STYLING ---------------------------------------- */
+        
+        #section2 {
+            background-color: #0be881;
+        }
+        
+        .video-container {
+            width: 75%;
+            height: 75%;
+            margin: 5rem;
+        }
+        
+        video {
+            background-color: #2f3542;
+            margin: 6rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        /* -------------------------------------- SECTION3 STYLING ---------------------------------------- */
+        
+        #section3 {
+            background-color: #40407a;
+        }
+        
+        form {
+            width: 50%;
+            border: 2px solid white;
+            padding: 4rem;
+            margin: 4rem;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: rgba(255, 255, 255, 0.61);
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-group {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            margin: 0.5rem 0;
+        }
+        
+        input[type='submit'] {
+            padding: 0.625rem;
+            background-color: #00b894;
+            color: whitesmoke;
+            margin: 0.4rem;
+            border: 2px solid #00b894;
+            border-radius: 0.2rem;
+            box-shadow: 0 2px 7px rgba(121, 116, 116, 0.3);
+        }
+        
+        input[type='submit']:hover {
+            transition: all 0.3s linear;
+            background-color: #3742fa;
+            color: white;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+        
+        label,
+        input,
+        textarea,
+        .form-group,
+        button {
+            letter-spacing: 1px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        textarea {
+            min-height: 5rem;
+        }
+        
+        input[type='email'],
+        textarea {
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 0.8125rem;
+            width: 70%;
+            height: 2rem;
+            border: 2px solid rgba(121, 116, 116, 0.3);
+            color: rgba(255, 255, 255, 0.61);
+            border-radius: 0.2rem;
+            padding: 0.3rem 0.625rem;
+        }
+        
+        input:focus,
+        textarea:focus-visible {
+            border-color: white;
+        }
+        /* -------------------------------------- TO MAKE IT RESPONSIVE ---------------------------------------- */
+        /* TABLET */
+        
+        @media(width:768px) {
+            form {
+                width: 100%;
+                padding: 1rem;
+                margin: 2rem;
+            }
+            .video-container {
+                width: 100%;
+                margin: 2rem;
+            }
+            video {
+                margin: 3rem;
+            }
+            #section1 {
+                padding: 15rem 0;
+            }
+        }
+        /* MOBILE-L & MOBILE-M*/
+        
+        @media(max-width:426px) {
+            form {
+                width: 150%;
+                padding: 0.8rem;
+                margin: 1.5rem 0;
+            }
+            h1.section-title {
+                text-align: center;
+                width: 125%;
+                line-height: 1rem;
+                font-size: 1rem;
+                margin: 1.5rem 0;
+            }
+            video {
+                margin: 0;
+            }
+            nav {
+                max-height: 5rem;
+                padding: 0.5rem;
+            }
+            .logo {
+                justify-content: flex-start;
+                width: 20%;
+            }
+            .navbar-items {
+                width: 79%;
+                justify-content: flex-end;
+            }
+            .logo>img {
+                max-width: 100%;
+                height: auto;
+            }
+            .navbar-items>a {
+                padding: 0.3rem;
+                font-size: 0.7rem;
+                margin: 0.3rem;
+            }
+            #section1 {
+                width: 100%;
+                padding: 15rem 2.2rem;
+            }
+        }
+        /* MOBILE-S*/
+        
+        @media(max-width:320px) {
+            .navbar-items>a {
+                padding: 0.3rem;
+                font-size: 0.6rem;
+                margin: 0.3rem;
+            }
+            #section1 {
+                width: 100%;
+                padding: 15rem 2.2rem;
+            }
+            form {
+                width: 175%;
+                padding: 0.5rem;
+                margin: 1rem 0;
+            }
+            .form-group {
+                font-size: smaller;
+            }
+            input[type='text'],
+            textarea {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- User Story #1: My product landing page should have a header element with a corresponding id="header". -->
+        <header id="header">
+
+            <!-- User Story #3: Within the #header element I can see a nav element with a corresponding id="nav-bar". -->
+            <!-- User Story #13: The navbar should always be at the top of the viewport. -->
+            <nav id="nav-bar" class="nav-bar flex-row">
+                <div class="logo flex-row">
+
+                    <!-- User Story #2: I can see an image within the header element with a corresponding id="header-img". A company logo would make a good image here. -->
+                    <img src="https://cdn.logo.com/hotlink-ok/logo-social.png" alt="logo" id="header-img">
+                </div>
+                <div class="navbar-items flex-row">
+
+                    <!-- User Story #4: I can see at least three clickable elements inside the nav element, each with the class nav-link. -->
+                    <!-- User Story #5: When I click a .nav-link button in the nav element, I am taken to the corresponding section of the landing page. -->
+                    <a href="#section1" class="nav-link flex-row">home</a>
+                    <a href="#section2" class="nav-link flex-row">about us</a>
+                    <a href="#section3" class="nav-link flex-row">contact us</a>
+                </div>
+            </nav>
+
+        </header>
+
+        <br>
+        <section id="section1" class="flex-column">
+            <h1 class="section-title">
+                Responsive web design projects : freeCodeCamp
+            </h1>
+
+
+        </section>
+
+
+
+        <section id="section2" class="flex-column">
+            <h1 class="section-title flex-row">
+                watch an embedded product video
+            </h1>
+            <!-- User Story #6: I can watch an embedded product video with id="video". -->
+            <div class="video-container flex-column">
+                <video src="#" id="video"></video>
+            </div>
+        </section>
+
+
+        <section id="section3" class="flex-column">
+            <h1 class="section-title">
+                FILL THE DETAILS AND SEND US A MAIL
+            </h1>
+            <!-- User Story #7: My landing page has a form element with a corresponding id="form". -->
+            <form class="flex-column" action="https://www.freecodecamp.com/email-submit" id="form" method="POST">
+                <div class="form-group">
+                    <label for="email" id="email-label">EMAIL</label>
+                    <!-- User Story #8: Within the form, there is an input field with id="email" where I can enter an email address. -->
+                    <!-- User Story #9: The #email input field should have placeholder text to let the user know what the field is for. -->
+                    <!-- User Story #10: The #email input field uses HTML5 validation to confirm that the entered text is an email address. -->
+                    <input type="email" name="email" id="email" placeholder="ENTER YOUR EMAIL HERE" required>
+
+                </div>
+                <div class="form-group">
+                    <label for="textarea">MESSAGE</label>
+                    <textarea name="msg" id="" cols="30" rows="10" placeholder="WRITE YOUR MESSAGE HERE" required></textarea>
+                </div>
+                <!-- User Story #11: Within the form, there is a submit input with a corresponding id="submit". -->
+                <!-- User Story #12: When I click the #submit element, the email is submitted to a static page (use this mock URL: https://www.freecodecamp.com/email-submit). -->
+                <input type="submit" id="submit" value="SEND">
+            </form>
+        </section>
+
+        <br><br>
+
+
+
+
+
+
+        <!-- User Story #14: My product landing page should have at least one media query. -->
+        <!-- User Story #15: My product landing page should utilize CSS flexbox at least once. -->
+    </div>
+</body>
+
+</html>

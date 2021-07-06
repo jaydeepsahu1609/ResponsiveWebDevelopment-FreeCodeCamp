@@ -1,0 +1,341 @@
+<!-- User Story #1: I can see a title with id="title" in H1 sized text.
+
+User Story #2: I can see a short explanation with id="description" in P sized text.
+
+User Story #3: I can see a form with id="survey-form".
+
+User Story #4: Inside the form element, I am required to enter my name in a field with id="name".
+
+User Story #5: Inside the form element, I am required to enter an email in a field with id="email".
+
+User Story #6: If I enter an email that is not formatted correctly, I will see an HTML5 validation error.
+
+User Story #7: Inside the form, I can enter a number in a field with id="number".
+
+User Story #8: If I enter non-numbers in the number input, I will see an HTML5 validation error.
+
+User Story #9: If I enter numbers outside the range of the number input, which are defined by the min and max attributes, 
+I will see an HTML5 validation error.
+
+User Story #10: For the name, email, and number input fields inside the form I can see corresponding labels that describe 
+the purpose of each field with the following ids: id="name-label", id="email-label", and id="number-label".
+
+User Story #11: For the name, email, and number input fields, I can see placeholder text that gives me a description or 
+instructions for each field.
+
+User Story #12: Inside the form element, I can select an option from a dropdown that has a corresponding id="dropdown".
+
+User Story #13: Inside the form element, I can select a field from one or more groups of radio buttons. Each group should 
+be grouped using the name attribute.
+
+User Story #14: Inside the form element, I can select several fields from a series of checkboxes, each of which must have 
+a value attribute.
+
+User Story #15: Inside the form element, I am presented with a textarea at the end for additional comments.
+
+User Story #16: Inside the form element, I am presented with a button with id="submit" to submit all my inputs.
+
+You can build your project by using this CodePen template and clicking Save to create your own pen. Or you can use this CDN 
+link to run the tests in any environment you like: https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js
+
+Once you're done, submit the URL to your working project with all its tests passing. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+
+    <style>
+        /* -------------------------------------- BASIC STYLING ---------------------------------------- */
+        
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        *:focus {
+            outline: none;
+        }
+        
+        .flex-column,
+        .flex-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .flex-column {
+            flex-direction: column;
+        }
+        
+        body {
+            max-width: 100vw;
+            min-height: 100vh;
+            max-height: auto;
+            padding: 0.625rem;
+        }
+        /* -------------------------------------- CONTAINER STYLING ---------------------------------------- */
+        
+        .container {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1)), url(https://png.pngtree.com/thumb_back/fh260/back_pic/00/04/53/9556248b4747950.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: fixed;
+            background-attachment: fixed;
+            /* background-blend-mode: lighten; */
+            padding: 1rem;
+        }
+        /* -------------------------------------- TITLE & DESCRIPTION STYLING ---------------------------------------- */
+        
+        .title {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif font-size: 2rem;
+            letter-spacing: 1px;
+            color: #ffeaa7;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-top: 1rem;
+        }
+        
+        .description {
+            font-size: 1rem;
+            color: #dff9fb;
+        }
+        /* -------------------------------------- FORM STYLING ---------------------------------------- */
+        
+        form {
+            width: 50%;
+            border: 2px solid transparent;
+            padding: 1rem;
+            margin: 3rem;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.2rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: rgba(255, 255, 255, 0.61);
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-group {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            margin: 0.5rem 0;
+        }
+        /* -------------------------------------- FORM ELEMENT STYLING ---------------------------------------- */
+        
+        label,
+        input,
+        select,
+        textarea,
+        .form-group,
+        button {
+            letter-spacing: 1px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        input[type='text'],
+        input[type='email'],
+        input[type='number'],
+        textarea,
+        select {
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 0.8125rem;
+            width: 50%;
+            height: 2rem;
+            border: 2px solid rgba(121, 116, 116, 0.3);
+            color: rgba(255, 255, 255, 0.61);
+            border-radius: 0.2rem;
+            padding: 0.3rem 0.625rem;
+        }
+        
+        input[type='checkbox'],
+        input[type='radio'] {
+            margin: 0 0.5rem;
+        }
+        
+        select {
+            padding: 0.3rem 0.325rem;
+        }
+        
+        textarea {
+            height: fit-content;
+        }
+        
+        .radio-group {
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        div.radio-group>label {
+            width: 50%;
+        }
+        
+        .radio-group-choices {
+            width: 50%;
+            justify-content: space-between;
+        }
+        
+        .checkbox-group {
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+        }
+        
+        .checkbox-choices {
+            letter-spacing: 0;
+            width: 100%;
+            font-size: 0.6rem;
+            justify-content: baseline;
+            text-transform: capitalize;
+            align-items: space-between;
+        }
+        
+        .checkbox-choices>span {
+            width: 100%;
+        }
+        
+        button {
+            padding: 0.625rem;
+            background-color: #00b894;
+            color: whitesmoke;
+            margin: 0.4rem;
+            border: 2px solid #00b894;
+            border-radius: 0.2rem;
+            box-shadow: 0 2px 7px rgba(121, 116, 116, 0.3);
+        }
+        
+        button:hover {
+            transition: all 0.3s linear;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container flex-column">
+
+        <!-- User Story #1: I can see a title with id="title" in H1 sized text. -->
+        <h1 id="title" class="title">
+            PLEASE FILL THE SURVEY FORM
+        </h1>
+
+        <!-- User Story #2: I can see a short explanation with id="description" in P sized text. -->
+        <p class="description" id="description">
+            Your suggestions help us to improve. Feel free to write us anything. Please fill the following survey form to help us get better.
+        </p>
+
+        <!-- User Story #3: I can see a form with id="survey-form". -->
+        <!-- User Story #10: For the name, email, and number input fields inside the form I can see corresponding labels that describe  -->
+        <!-- the purpose of each field with the following ids: id="name-label", id="email-label", and id="number-label". -->
+        <!-- User Story #11: For the name, email, and number input fields, I can see placeholder text that gives me a description or  -->
+        <!-- instructions for each field. -->
+
+        <form class="flex-column" action="#" id="survey-form" method="POST">
+
+            <!-- User Story #4: Inside the form element, I am required to enter my name in a field with id="name". -->
+            <div class="form-group">
+                <label for="name" id="name-label">NAME</label>
+                <input type="text" name="name" id="name" placeholder="ENTER YOUR NAME HERE" required>
+
+            </div>
+
+            <!-- User Story #5: Inside the form element, I am required to enter an email in a field with id="email". -->
+            <!-- User Story #6: If I enter an email that is not formatted correctly, I will see an HTML5 validation error. -->
+            <div class="form-group">
+                <label for="email" id="email-label">EMAIL</label>
+                <input type="email" name="email" id="email" placeholder="ENTER YOUR EMAIL HERE" required>
+
+
+            </div>
+
+            <!-- User Story #7: Inside the form, I can enter a number in a field with id="number". -->
+            <!-- User Story #8: If I enter non-numbers in the number input, I will see an HTML5 validation error. -->
+            <!-- User Story #9: If I enter numbers outside the range of the number input, which are defined by the min and max attributes,  -->
+            <!-- I will see an HTML5 validation error. -->
+            <div class="form-group">
+                <label for="age" id="number-label">AGE</label>
+                <input type="number" name="age" id="number" min=5 max=100 placeholder="ENTER YOUR AGE" required>
+            </div>
+
+
+
+            <!-- User Story #12: Inside the form element, I can select an option from a dropdown that has a corresponding id="dropdown". -->
+            <div class="form-group">
+                <label for="dropdown">COUNTRY</label>
+                <select name="dropdown" id="dropdown" required>
+                    <option value="none" selected disabled>SELECT YOUR COUNTRY</option>
+                    <option value="USA">USA</option>
+                    <option value="INDIA">INDIA</option>
+                    <option value="RUSSIA">RUSSIA</option>
+                    <option value="CHINA">CHINA</option>
+                    <option value="CANADA">CANADA</option>
+                </select>
+            </div>
+
+
+
+            <!-- User Story #13: Inside the form element, I can select a field from one or more groups of radio buttons. Each group should  -->
+            <!-- be grouped using the name attribute. -->
+            <div class="form-group radio-group">
+                <label for="gender">GENDER</label>
+                <div class="flex-row radio-group-choices">
+                    <span>
+                        <input type="radio" name="gender" id=" " value="M">MALE
+                    </span>
+                    <span>
+                        <input type="radio" name="gender" id="" value="F">FEMALE
+                    </span>
+                </div>
+
+
+
+            </div>
+
+            <!-- User Story #15: Inside the form element, I am presented with a textarea at the end for additional comments. -->
+            <div class="form-group">
+                <label for="textarea">SUGGESTIONS</label>
+                <textarea name="suggestion" id="" cols="30" rows="10" required></textarea>
+
+            </div>
+
+            <!-- User Story #14: Inside the form element, I can select several fields from a series of checkboxes, each of which must have  -->
+            <!-- a value attribute. -->
+            <div class="form-group checkbox-group">
+                <label for="declaration">SELECT THE CHECKBOXES</label>
+                <div class="checkbox-choices flex-column">
+                    <span>
+                       <input type="checkbox" name="declare" id="" value="correctInfo">i, hereby, declare that all the information given by me is true as per my belief. i shall be responsible for any deviaition in them in future.
+                   </span>
+
+                    <span>
+                       <input type="checkbox" name="verify" id="" value="tnc">i have read all the terms and conditions of the organization
+                   </span>
+                </div>
+
+            </div>
+
+            <!-- User Story #16: Inside the form element, I am presented with a button with id="submit" to submit all my inputs. -->
+            <button type="submit" id="submit">SUBMIT THE SURVEY</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
