@@ -1,7 +1,7 @@
 # ResponsiveWebDevelopment-FreeCodeCamp
 This repo contains all the mini front end pages I have made during certification from FreeCodeCamp as a final project submission. I have used plain html, css and vanila JS for it.
 
-## Visit following codepen links to get the output of these pages
+## Visit following codepen links to see the output of these pages
 
 *1. Tribute Page*
 
